@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0e0e0e;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #1a1a1a;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav h1 {
+            color: #00bfff;
+            font-size: 1.5rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #00bfff;
+        }
+
+        /* Carousel */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            height: 450px;
+        }
+        .carousel img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            transition: left 1.9s ease;
+        }
+        .carousel img.active {
+            left: 0;
+        }
+        .carousel img.prev {
+            left: -100%;
+        }
+
+        /* Tabs */
+        .tabs {
+            margin: 2rem;
+        }
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .tab-buttons button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #1a1a1a;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .tab-buttons button.active,
+        .tab-buttons button:hover {
+            background-color: #00bfff;
+            color: #000;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 1rem;
+        }
+        .card-content h3 {
+            color: #00bfff;
+            margin-bottom: 0.5rem;
+        }
+        .card-content p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            padding: 1.5rem;
+            text-align: center;
+            color: #777;
+        }
+        .social-links a {
+            color: #00bfff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        .social-links a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav><h1>Gaming Hub</h1>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="https://discord.gg/VbKurZCJbB" target="_blank">Discord</a></li>
+            <li><a href="https://www.youtube.com/@Aayubrop" target="_blank">Youtube</a></li>
+            <li><a href="https://www.instagram.com/aayubrop/" target="_blank">Instagram</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- Carousel -->
+    <div class="carousel" id="carousel">
+        <img src="valorant.jpeg" class="active" alt="Slide 1">
+        <img src="Grand-Theft-Auto-6-promo-banner.jpg" alt="Slide 2" height="20" >
+        <img src="1920-x-1080-gaming-02ugcij9dqeskdb3.jpg" alt="Slide 3">
+        <img src="gaminghub.jpeg" alt="Slide 4">
+    </div>
+
+    <!-- Tabs -->
+    <section class="tabs">
+        <div class="tab-buttons">
+            <button class="active" onclick="showTab(0)">Latest</button>
+            <button onclick="showTab(1)">Reviews</button>
+            <button onclick="showTab(2)">Upcoming</button>
+            <button onclick="showTab(3)">PC Games</button>
+            <button onclick="showTab(4)">Consoles</button>
+        </div>
+
+        <!-- Latest -->
+        <div class="tab-content active">
+            <div class="card">
+                <img src="0x0.jpeg" alt="">
+                <div class="card-content">
+                    <h3>New PC Game Release</h3>
+                    <p>Explore the cutting-edge graphics and gameplay of the newest AAA title.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="0x1.jpg" alt="">
+                <div class="card-content">
+                    <h3>FPS Tournament Announced</h3>
+                    <p>Compete with the best in the ultimate shooting championship.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="0x2.jpeg" alt="">
+                <div class="card-content">
+                    <h3>Racing Game DLC</h3>
+                    <p>Get ready for new tracks, cars, and challenges in the latest expansion.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="tab-content">
+            <div class="card">
+                <img src="247200_Asus_ROG_Ally_X_Review_LEDE_DSC02347_SHOLLISTER.jpeg" alt="">
+                <div class="card-content">
+                    <h3>Review: Cyber Battle</h3>
+                    <p>Our verdict on this futuristic action-packed adventure.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="0x3.jpeg" alt="">
+                <div class="card-content">
+                    <h3>Open World Masterpiece</h3>
+                    <p>An immersive world with stunning visuals and deep gameplay mechanics.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming -->
+        <div class="tab-content">
+            <div class="card">
+                <img src="0x4.jpg" alt="">
+                <div class="card-content">
+                    <h3>VR Game of the Future</h3>
+                    <p>Immersive worlds and next-gen tech are just around the corner.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="0x5.jpeg" alt="">
+                <div class="card-content">
+                    <h3>GTA VI</h3>
+                    <p>First look at a magical realm with epic quests and battles.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC Games -->
+        <div class="tab-content">
+            <div class="card">
+                <img src="0x7.jpeg" alt="">
+                <div class="card-content">
+                    <h3>Oblivion Remastered. "Lies of P"</h3>
+                    <p>New heroes, balance changes, and features for the competitive scene.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="0x8.jpeg" alt="">
+                <div class="card-content">
+                    <h3>Ghost of Tsushima Director's Cut</h3>
+                    <p>A unique blend of storytelling and gameplay in a new indie hit.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consoles -->
+        <div class="tab-content">
+            <div class="card">
+                <img src="0x9.jpeg" alt="">
+                <div class="card-content">
+                    <h3>PS5 Exclusive Revealed</h3>
+                    <p>An action-packed title with breathtaking graphics and story.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="0x10.jpeg" alt="">
+                <div class="card-content">
+                    <h3>Xbox Game Pass Update</h3>
+                    <p>New games added to the subscription service this month.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Gaming Hub | All rights reserved | @AayuBrop</p>
+        <div class="social-links">
+            <a href="#">&#x1F4F1;</a>
+            <a href="#">&#x1F4F7;</a>
+            <a href="#">&#x1F4F2;</a>
+        </div>
+    </footer>
+
+    <script>
+        // Carousel
+        const carouselImages = document.querySelectorAll('#carousel img');
+        let index = 0;
+        setInterval(() => {
+            carouselImages[index].classList.remove('active');
+            carouselImages[index].classList.add('prev');
+            index = (index + 1) % carouselImages.length;
+            carouselImages[index].classList.remove('prev');
+            carouselImages[index].classList.add('active');
+        }, 3000);
+
+        // Tabs
+        function showTab(tabIndex) {
+            document.querySelectorAll('.tab-buttons button').forEach((btn, i) => {
+                btn.classList.toggle('active', i === tabIndex);
+            });
+            document.querySelectorAll('.tab-content').forEach((content, i) => {
+                content.classList.toggle('active', i === tabIndex);
+            });
+        }
+    </script>
+</body>
+</html>

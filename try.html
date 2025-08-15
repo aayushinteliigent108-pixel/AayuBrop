@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background-color: #0e0e0e; color: #fff; line-height: 1.6; }
+
+        /* Navbar */
+        nav {
+    background-color: #1a1a1a;
+    padding: 0.3rem 1rem; /* Increased top/bottom padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+nav h1 { 
+    color: #00bfff; 
+    font-size: 1.8rem; /* Slightly bigger title */
+}
+nav ul { 
+    list-style: none; 
+    display: flex; 
+    gap: 2rem; /* More space between links */
+}
+nav ul li a { 
+    color: #fff; 
+    text-decoration: none; 
+    font-size: 1rem; /* Slightly bigger text */
+    transition: color 0.3s; 
+}
+nav ul li a:hover { 
+    color: #00bfff; 
+}
+        /* Carousel */
+        .carousel { position: relative; overflow: hidden; height: 400px; margin-bottom: 2rem; }
+        .carousel img { width: 100%; height: 400px; object-fit: cover; position: absolute; top: 0; left: 100%; transition: left 1s ease; }
+        .carousel img.active { left: 0; }
+        .carousel img.prev { left: -100%; }
+
+        /* Content */
+        .content { padding: 2rem; }
+        h1 { color: #00bfff; margin-bottom: 1rem; }
+        p { color: #ccc; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <h1>Gaming Hub</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Latest</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Upcoming</a></li>
+            <li><a href="#">PC Games</a></li>
+            <li><a href="#">Consoles</a></li>
+        </ul>
+    </nav>
+
+    <!-- Carousel -->
+    <div class="carousel" id="gameCarousel">
+        <img src="https://source.unsplash.com/1920x400/?gaming" class="active" alt="Slide 1">
+        <img src="https://source.unsplash.com/1920x400/?videogame" alt="Slide 2">
+        <img src="https://source.unsplash.com/1920x400/?pcgame" alt="Slide 3">
+    </div>
+
+    <!-- Game Info -->
+    <div class="content" id="gameInfo">
+        <h1>Game Title</h1>
+        <p>Here will be the information, updates, and news about the selected game.</p>
+    </div>
+
+    <script>
+        // Carousel
+        const carouselImages = document.querySelectorAll('#gameCarousel img');
+        let index = 0;
+        setInterval(() => {
+            carouselImages[index].classList.remove('active');
+            carouselImages[index].classList.add('prev');
+            index = (index + 1) % carouselImages.length;
+            carouselImages[index].classList.remove('prev');
+            carouselImages[index].classList.add('active');
+        }, 3000);
+
+        // Get game from URL
+        const params = new URLSearchParams(window.location.search);
+        const game = params.get('game');
+        const gameInfo = document.getElementById('gameInfo');
+
+        // Example game data
+        const games = {
+            pcgame1: {
+                title: "New PC Game Release",
+                description: "Explore the cutting-edge graphics and gameplay of the newest AAA title. Latest updates, DLCs, and more."
+            },
+            fps1: {
+                title: "FPS Tournament Announced",
+                description: "Compete with the best in the ultimate shooting championship. Check schedule, prizes, and leaderboards."
+            },
+            racing1: {
+                title: "Racing Game DLC",
+                description: "Get ready for new tracks, cars, and challenges in the latest expansion."
+            }
+        };
+
+        if(games[game]) {
+            gameInfo.querySelector('h1').innerText = games[game].title;
+            gameInfo.querySelector('p').innerText = games[game].description;
+        }
+    </script>
+
+</body>
+</html>
